@@ -26,6 +26,8 @@ gen_config_file() {
             echo "server=/${domain}/${upstream_dns_server}" >> "${config_file_name}"
         fi
         echo "ipset=/${domain}/${ipset_name}" >> "${config_file_name}"
+
+        ipset flush ${ipset_name}
     }
     config_list_foreach "${section}" "managed_domain" handle_domain
 }
